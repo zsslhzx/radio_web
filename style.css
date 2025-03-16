@@ -1,0 +1,508 @@
+:root {
+    --primary: #00b4d8;
+    --secondary: #90e0ef;
+    --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --nav-width: 280px;
+    --header-height: 160px;
+}
+
+/* 设置全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PingFang SC', 'Segoe UI', sans-serif;
+    /* 改善文本渲染效果 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 设置 body 样式 */
+body {
+    background: var(--bg-gradient);
+    color: #fff;
+    min-height: 100vh;
+    line-height: 1.6;
+    /* 改善滚动性能 */
+    overflow-y: scroll;
+}
+
+/* 设置主标题栏样式 */
+.main-header {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    /* 稍微降低模糊效果以提升性能 */
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    /* 提示浏览器该元素的 backdrop-filter 和 box-shadow 属性将会发生变化 */
+    will-change: backdrop-filter, box-shadow;
+}
+
+/* 设置发光标题样式 */
+.glowing-title {
+    font-size: 2.8rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 180, 216, 0.2);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+    /* 提示浏览器该元素的 text-shadow 属性将会发生变化 */
+    will-change: text-shadow;
+}
+
+/* 设置副标题样式 */
+.header-sub {
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* 设置侧边导航栏样式 */
+.side-nav {
+    width: var(--nav-width);
+    position: fixed;
+    left: 0;
+    top: var(--header-height);
+    bottom: 0;
+    padding: 2rem 1.5rem;
+    /* 稍微降低模糊效果以提升性能 */
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /* 提示浏览器该元素的 backdrop-filter 和 transform 属性将会发生变化 */
+    will-change: backdrop-filter, transform;
+    z-index: 2; /* 确保侧边导航栏在内容上方 */
+}
+
+/* 设置导航栏项目样式 */
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--glass-bg);
+    position: relative;
+    overflow: hidden;
+    /* 提示浏览器该元素的 transform 和 background 属性将会发生变化 */
+    will-change: transform, background;
+}
+
+/* 设置导航栏项目hover时的before伪元素样式 */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: left 0.3s;
+    /* 提示浏览器该元素的 left 属性将会发生变化 */
+    will-change: left;
+}
+
+/* 导航栏项目hover时显示before伪元素 */
+.nav-item:hover::before {
+    left: 100%;
+}
+
+/* 设置激活状态的导航栏项目样式 */
+.nav-item.active {
+    background: linear-gradient(135deg, rgba(0,180,216,0.2), transparent);
+    border-left: 4px solid var(--primary);
+    transform: translateX(5px);
+}
+
+/* 设置导航栏图标样式 */
+.nav-icon {
+    font-size: 1.4rem;
+    margin-right: 1rem;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.1));
+}
+
+/* 设置导航栏文本样式 */
+.nav-text {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* 设置内容容器样式 */
+.content-container {
+    margin-left: var(--nav-width);
+    margin-top: var(--header-height);
+    padding: 2rem;
+    min-height: calc(100vh - var(--header-height));
+    /* 提示浏览器该元素的 transform 属性将会发生变化 */
+    will-change: transform;
+    z-index: 1;
+    position: relative;
+}
+
+/* 设置内容卡片样式 */
+.content-card {
+    background: var(--glass-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    /* 稍微降低模糊效果以提升性能 */
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* 提示浏览器该元素的 backdrop-filter 和 box-shadow 属性将会发生变化 */
+    will-change: backdrop-filter, box-shadow;
+}
+
+/* 设置播放列表区域样式 */
+.playlist-section {
+    margin-top: 1.5rem;
+}
+
+/* 设置时间块样式 */
+.time-block {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: transform 0.2s ease-in-out;
+    /* 提示浏览器该元素的 transform 属性将会发生变化 */
+    will-change: transform;
+}
+
+/* 时间块hover效果 */
+.time-block:hover {
+    transform: translateY(-3px);
+}
+
+/* 设置时间块头部样式 */
+.time-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* 设置时间块图标样式 */
+.time-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+/* 设置歌曲列表样式 */
+.song-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out; /* 增加动画持续时间 */
+    position: relative;
+    overflow: hidden;
+    /* 提示浏览器该元素的 background 属性将会发生变化 */
+    will-change: background;
+}
+
+/* 歌曲列表项hover效果 */
+.song-list li:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+/* 设置歌曲时长样式 */
+.duration {
+    text-align: right;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* 设置请求表单样式 */
+.request-form {
+    margin-top: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* 设置iframe样式 */
+iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+}
+
+/* 设置联系信息样式 */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 设置联系信息项样式 */
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 15px;
+}
+
+/* 设置联系信息图标样式 */
+.info-icon {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+}
+
+/* 定义标题发光动画 */
+@keyframes titleGlow {
+    from { text-shadow: 0 0 8px rgba(0,180,216,0.2); }
+    to { text-shadow: 0 0 20px rgba(0,180,216,0.4); }
+}
+
+/* 媒体查询，适配小屏幕 */
+@media (max-width: 768px) {
+    :root {
+        --nav-width: 100%;
+        --header-height: 120px;
+    }
+
+    .side-nav {
+        position: static;
+        padding: 1rem;
+        top: auto;
+        margin-top: var(--header-height); /* 将侧边导航栏移到标题下方 */
+    }
+
+    .content-container {
+        margin-left: 0;
+        padding: 1rem;
+        margin-top: 1rem; /* 减小正文内容的顶部间距 */
+    }
+
+    .glowing-title {
+        font-size: 2rem;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+}
+
+/* 确保内容区块隐藏 */
+.content {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out;
+    /* 提示浏览器该元素的 transform, opacity 和 display 属性将会发生变化 */
+    will-change: transform, opacity, display;
+}
+
+/* 显示激活的内容区块 */
+.content.active {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 修复z-index层级问题 */
+.content-container {
+    z-index: 1;
+    position: relative;
+}
+
+.side-nav {
+    z-index: 2;
+}
+
+/* 设置歌曲列表项样式 */
+.song-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 增加动画持续时间 */
+    position: relative;
+    overflow: hidden;
+    /* 提示浏览器该元素的 transform 和 background 属性将会发生变化 */
+    will-change: transform, background;
+}
+
+/* 设置歌曲列表项hover时的before伪元素样式 */
+.song-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.05),
+        transparent);
+    transition: left 0.4s; /* 增加动画持续时间 */
+    /* 提示浏览器该元素的 left 属性将会发生变化 */
+    will-change: left;
+}
+
+/* 歌曲列表项hover时显示before伪元素 */
+.song-list li:hover::before {
+    left: 100%;
+}
+
+/* 设置推荐标签样式 */
+.recommend-tag {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 6px rgba(0,180,216,0.2);
+    transition: transform 0.2s ease-in-out;
+    /* 提示浏览器该元素的 transform 和 box-shadow 属性将会发生变化 */
+    will-change: transform, box-shadow;
+}
+
+/* 卡片悬浮特效 */
+.time-block {
+    background: linear-gradient(145deg,
+        rgba(0,0,0,0.15),
+        rgba(255,255,255,0.02));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    /* 移除3D透视效果 */
+    /* transform: perspective(800px) rotateX(0deg) rotateY(0deg); */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* 提示浏览器该元素的 transform, backdrop-filter 和 box-shadow 属性将会发生变化 */
+    will-change: transform, backdrop-filter, box-shadow;
+}
+
+/* 时间块hover效果 */
+.time-block:hover {
+    /* 移除3D旋转效果，仅保留简单的位移和阴影 */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,180,216,0.1);
+}
+
+/* 动态光效 */
+@keyframes lightFlow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* 时间块after伪元素，用于实现动态光效 */
+.time-block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--primary),
+        transparent);
+    animation: lightFlow 2s linear infinite;
+    /* 提示浏览器该元素的 background-position 属性将会发生变化 */
+    will-change: background-position;
+}
+
+/* 新增期次容器样式 */
+.playlist-period {
+    border-radius: 25px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    background: transparent; /* 移除背景 */
+}
+
+/* 增强流光边框效果 */
+.playlist-period::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 25px;
+    padding: 1px;
+    background: linear-gradient(45deg,
+        var(--primary),
+        var(--secondary),
+        var(--primary));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 2s linear infinite;
+    z-index: 0;
+    /* 提示浏览器该元素的 background-position 属性将会发生变化 */
+    will-change: background-position;
+}
+
+/* 调整期次内容层级 */
+.playlist-period > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 动态光效 */
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 期次标题样式 */
+.period-title {
+    font-size: 1.6rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* 期次标题后的装饰线 */
+.period-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+        var(--primary),
+        transparent);
+    margin-left: 1rem;
+}
+
+/* 期次编号样式 */
+.period-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: var(--primary);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 0.8rem;
+    box-shadow: 0 0 10px rgba(0,180,216,0.2);
+    font-size: 0.9rem;
+}
