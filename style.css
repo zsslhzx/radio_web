@@ -652,3 +652,202 @@ body {
         transform: translateY(0);
     }
 }
+
+/* 动态头部阴影效果 */
+.main-header {
+    transition: box-shadow 0.3s var(--transition-timing);
+}
+
+.main-header.scrolled {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* 增强卡片光效 */
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(0, 180, 216, 0.1) 50%,
+        transparent 75%
+    );
+    animation: cardGlow 6s infinite linear;
+    z-index: -1;
+}
+
+@keyframes cardGlow {
+    100% { transform: rotate(360deg); }
+}
+
+/* 增强导航激活状态 */
+.nav-item.active {
+    box-shadow: inset 4px 0 12px var(--shadow-color);
+}
+
+/* 3D悬浮效果 */
+.content-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.content-card:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 动态时间线 */
+.time-block::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--primary) 50%,
+        transparent 100%
+    );
+    animation: lineFlow 3s infinite linear;
+}
+
+@keyframes lineFlow {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+/* 增强歌曲列表交互 */
+.song-list li {
+    transition: transform 0.3s var(--transition-timing),
+                box-shadow 0.3s var(--transition-timing);
+}
+
+.song-list li:hover {
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateX(8px) scale(1.02);
+}
+
+/* 渐变边框效果 */
+.playlist-period {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+}
+
+.playlist-period::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        transparent 40%,
+        var(--secondary)
+    );
+    opacity: 0.3;
+}
+
+/* 响应式优化增强 */
+@media (max-width: 768px) {
+    .song-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem;
+    }
+
+    .song-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .duration {
+        align-self: flex-end;
+    }
+}
+
+/* 粒子背景效果 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle,
+        var(--primary) 0%,
+        transparent 70%);
+    border-radius: 50%;
+    animation: particleFloat 8s infinite linear;
+}
+
+@keyframes particleFloat {
+    from { transform: translateY(110vh); }
+    to { transform: translateY(-20vh); }
+}
+
+/* 增强文字可读性 */
+.content-card h2 {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 智能颜色对比 */
+@media (prefers-contrast: high) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --border-color: rgba(255,255,255,0.3);
+    }
+
+    .content-card {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* 触觉反馈优化 */
+@media (pointer: coarse) {
+    .nav-item {
+        min-height: 48px;
+        padding: 1.5rem;
+    }
+
+    .song-list li {
+        padding: 1.5rem;
+    }
+}
+
+/* 加载动画优化 */
+.loading::after {
+    filter: drop-shadow(0 0 6px var(--primary));
+}
+
+/* 动态主题切换支持 */
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
+        --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --border-color: rgba(0, 0, 0, 0.1);
+        --card-bg: rgba(255, 255, 255, 0.4);
+    }
+
+    .glowing-title {
+        background: linear-gradient(45deg, #0077b6, #00b4d8);
+    }
+}
