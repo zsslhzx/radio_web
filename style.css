@@ -835,19 +835,3 @@ body {
 .loading::after {
     filter: drop-shadow(0 0 6px var(--primary));
 }
-
-/* 动态主题切换支持 */
-@media (prefers-color-scheme: light) {
-    :root {
-        --text-primary: #1a1a1a;
-        --text-secondary: #4a4a4a;
-        --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        --glass-bg: rgba(255, 255, 255, 0.7);
-        --border-color: rgba(0, 0, 0, 0.1);
-        --card-bg: rgba(255, 255, 255, 0.4);
-    }
-
-    .glowing-title {
-        background: linear-gradient(45deg, #0077b6, #00b4d8);
-    }
-}
