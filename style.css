@@ -329,59 +329,13 @@ body {
     box-shadow: 0 0 20px rgba(0,180,216,0.4);
 }
 
-/* 未播出排期的特殊样式 */
-.playlist-period.upcoming {
-    background: linear-gradient(135deg, rgba(216,180,0,0.05), transparent);
-    border-left: 4px solid #d8b400;
-    position: relative;
-}
-
-.playlist-period.upcoming .period-title::after {
-    background: linear-gradient(90deg, #d8b400, transparent);
-}
-
-.playlist-period.upcoming .period-number {
-    background: linear-gradient(135deg, #d8b400, #ffd700);
-    box-shadow: 0 0 15px rgba(216,180,0,0.3);
-}
-
-.upcoming-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #d8b400, #ffd700);
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-left: 1rem;
-    box-shadow: 0 2px 8px rgba(216,180,0,0.3);
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 0.7; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.7; transform: scale(1); }
-}
-
-/* 高亮效果 */
-@keyframes highlight {
-    0% { box-shadow: 0 0 0 rgba(216,180,0,0); }
-    50% { box-shadow: 0 0 30px rgba(216,180,0,0.8); }
-    100% { box-shadow: 0 0 0 rgba(216,180,0,0); }
-}
-
-.playlist-period.highlight {
-    animation: highlight 2s ease-in-out;
-}
-
 
 /* 播放列表区域 */
 .playlist-section {
-    margin-top: 2rem; /* 优化：调整间距 */
+    margin-top: 2rem; /* 调整间距 */
     display: grid;
-    gap: 2.5rem; /* 优化：调整间距 */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 优化：调整最小宽度 */
+    gap: 2.5rem; /* 调整间距 */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 调整最小宽度 */
 }
 
 /* 时间块动态边框 - 如果需要 */
@@ -393,14 +347,14 @@ body {
 
 /* 时间块样式 */
 .time-block {
-    background: rgba(0, 0, 0, 0.2); /* 优化：调整背景透明度 */
-    border-radius: 20px; /* 优化：调整圆角 */
-    padding: 2rem; /* 优化：调整内边距 */
+    background: rgba(0, 0, 0, 0.2); /* 调整背景透明度 */
+    border-radius: 20px; /* 调整圆角 */
+    padding: 2rem; /* 调整内边距 */
     position: relative;
     overflow: hidden;
     transition: all 0.3s var(--transition-timing);
     border: 1px solid var(--border-color);
-    margin: 0; /* 优化：移除外边距，使用 grid gap 控制 */
+    margin: 0; /* 移除外边距，使用 grid gap 控制 */
 }
 
 /* 动态时间线 - 垂直流光 */
@@ -477,10 +431,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 1.5rem; /* 优化：调整内边距 */
-    margin: 0.8rem 0; /* 优化：调整外边距 */
-    background: rgba(255,255,255,0.03); /* 优化：调整背景 */
-    border-radius: 15px; /* 优化：调整圆角 */
+    padding: 1.2rem 1.5rem; /* 调整内边距 */
+    margin: 0.8rem 0; /* 调整外边距 */
+    background: rgba(255,255,255,0.03); /* 调整背景 */
+    border-radius: 15px; /* 调整圆角 */
     transition: transform 0.3s var(--transition-timing),
                 box-shadow 0.3s var(--transition-timing),
                 background-color 0.3s var(--transition-timing); /* 添加背景色过渡 */
@@ -489,7 +443,7 @@ body {
 }
 
 .song-list li:hover {
-    background: rgba(255,255,255,0.06); /* 优化：调整悬停背景色 */
+    background: rgba(255,255,255,0.06); /* 调整悬停背景色 */
     /* 增强歌曲列表交互 */
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
     transform: translateX(8px) scale(1.02);
@@ -639,6 +593,26 @@ body {
     }
 }
 
+.jump-button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-timing);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.jump-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
 /* 响应式布局 */
 /* 响应式断点更新 - Tablet */
 @media (max-width: 1024px) {
@@ -659,101 +633,101 @@ body {
 /* --- MOBILE OPTIMIZATIONS START --- */
 @media (max-width: 768px) {
     :root {
-        /* --- 优化：显著减小移动端头部高度 --- */
+        /* --- 显著减小移动端头部高度 --- */
         --header-height: 70px;
         --nav-width: 100%; /* 导航变为底部栏，宽度占满 */
     }
 
     .main-header {
-        /* --- 优化：调整移动端头部内边距 --- */
+        /* --- 调整移动端头部内边距 --- */
         padding: 0.8rem 1rem; /* 稍微减小垂直内边距 */
         /* 可能需要调整z-index确保在底部导航之上，如果导航z-index很高 */
         z-index: 1002;
     }
 
     .glowing-title {
-        /* --- 优化：调整移动端标题字体大小 --- */
+        /* --- 调整移动端标题字体大小 --- */
         font-size: clamp(1.6rem, 4vw, 2rem);
     }
 
     .header-sub {
-       /* --- 优化：调整移动端副标题字体大小和边距 --- */
+       /* --- 调整移动端副标题字体大小和边距 --- */
         font-size: clamp(0.8rem, 2vw, 0.9rem);
         margin-top: 0.2rem; /* 减小与主标题的间距 */
     }
 
     .side-nav {
-        /* --- 优化：将导航栏移至底部 --- */
+        /* --- 将导航栏移至底部 --- */
         position: fixed;
         bottom: 0;
         left: 0; /* 确保从左边缘开始 */
         top: auto; /* 覆盖之前的 top: var(--header-height) */
         width: 100%; /* 占满宽度 */
         height: auto; /* 高度由内容决定 */
-        /* --- 优化：减小内边距以降低导航栏高度 --- */
+        /* --- 减小内边距以降低导航栏高度 --- */
         padding: 0.4rem 0.5rem; /* 上下0.4rem, 左右0.5rem */
-        /* --- 优化：使用更不透明的背景和模糊效果 --- */
+        /* --- 使用更不透明的背景和模糊效果 --- */
         background: rgba(10, 10, 20, 0.85); /* 更深的背景色 */
         backdrop-filter: blur(8px);
        -webkit-backdrop-filter: blur(8px);
-        /* --- 优化：Flex布局用于横向排列导航项 --- */
+        /* --- Flex布局用于横向排列导航项 --- */
         display: flex;
         justify-content: space-around; /* 项目均匀分布 */
         align-items: center; /* 垂直居中 */
         transform: translateY(0); /* 确保可见 */
-        /* --- 优化：添加顶部边框进行视觉分隔 --- */
+        /* --- 添加顶部边框进行视觉分隔 --- */
         border-top: 1px solid var(--border-color);
-        /* --- 优化：移除桌面端的右边框 --- */
+        /* --- 移除桌面端的右边框 --- */
         border-right: none;
-        /* --- 优化：确保导航栏在内容之上 --- */
+        /* --- 确保导航栏在内容之上 --- */
         z-index: 1001;
-        /* --- 优化：移除桌面端的Y轴滚动 --- */
+        /* --- 移除桌面端的Y轴滚动 --- */
         overflow-y: hidden;
     }
 
     /* 如果有 .side-nav.hidden 样式且不再需要，可以移除 */
 
     .nav-item {
-        /* --- 优化：调整导航项外边距 --- */
+        /* --- 调整导航项外边距 --- */
         margin: 0 0.2rem;
-        /* --- 优化：显著减小内边距 --- */
+        /* --- 显著减小内边距 --- */
         padding: 0.4rem 0.3rem; /* 上下0.4rem, 左右0.3rem */
-        /* --- 优化：允许导航项在Flex容器中自适应宽度 --- */
+        /* --- 允许导航项在Flex容器中自适应宽度 --- */
         flex: 1; /* 让每个项目占据可用空间的一部分 */
-        /* --- 优化：改为垂直排列图标和文字 --- */
+        /* --- 改为垂直排列图标和文字 --- */
         display: flex;
         flex-direction: column;
         align-items: center; /* 水平居中 */
         justify-content: center; /* 垂直居中 */
-        /* --- 优化：移除最小宽度限制，让其更灵活 --- */
+        /* --- 移除最小宽度限制，让其更灵活 --- */
         min-width: auto;
-        /* --- 优化：调整圆角 --- */
+        /* --- 调整圆角 --- */
         border-radius: 8px;
-         /* --- 优化：重置或调整不适用于底部导航的悬停效果 --- */
+         /* --- 重置或调整不适用于底部导航的悬停效果 --- */
         transform: none !important; /* 禁用位移 */
         border: none; /* 移除边框 */
         background: transparent; /* 使用透明背景 */
         position: static; /* 移除 relative，除非伪元素仍需定位 */
         overflow: visible; /* 确保内容可见 */
-        /* --- 优化：移除桌面端的悬停动画 --- */
+        /* --- 移除桌面端的悬停动画 --- */
         animation: none;
-        /* --- 优化：移除桌面端的 ::before 和 ::after 效果，如果它们不适用 --- */
+        /* --- 移除桌面端的 ::before 和 ::after 效果，如果它们不适用 --- */
     }
     .nav-item::before, .nav-item::after {
          display: none; /* 在移动端隐藏这些伪元素效果 */
     }
 
      .nav-item:hover {
-        /* --- 优化：提供简单的背景反馈作为悬停效果 --- */
+        /* --- 提供简单的背景反馈作为悬停效果 --- */
         background: rgba(255, 255, 255, 0.1);
         /* 移除桌面悬停动画 */
         /* animation: none; */
     }
 
      .nav-item.active {
-        /* --- 优化：调整移动端激活状态样式 --- */
+        /* --- 调整移动端激活状态样式 --- */
         background: rgba(0, 180, 216, 0.15); /* 使用稍微明显一点的背景 */
-        /* --- 优化：用顶部边框代替左侧边框来指示激活 --- */
+        /* --- 用顶部边框代替左侧边框来指示激活 --- */
         border-left: none; /* 移除左边框 */
         border-top: 3px solid var(--primary); /* 添加顶部高亮边框 */
         transform: none !important; /* 确保没有位移 */
@@ -771,7 +745,7 @@ body {
 
 
     .nav-icon {
-        /* --- 优化：减小图标尺寸和调整边距 --- */
+        /* --- 减小图标尺寸和调整边距 --- */
         font-size: 1.1rem; /* 减小图标 */
         margin-right: 0; /* 移除右边距 */
         margin-bottom: 0.1rem; /* 图标和文字间的微小间距 */
@@ -779,10 +753,10 @@ body {
     }
 
     .nav-text {
-        /* --- 优化：减小文字大小和处理溢出 --- */
+        /* --- 减小文字大小和处理溢出 --- */
         font-size: 0.65rem; /* 显著减小文字 */
         letter-spacing: 0.3px; /* 减小字间距 */
-        /* --- 优化：防止文字换行并用省略号处理长文本 --- */
+        /* --- 防止文字换行并用省略号处理长文本 --- */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -792,26 +766,26 @@ body {
     }
 
     .content-container {
-        /* --- 优化：移除桌面端的左侧边距 --- */
+        /* --- 移除桌面端的左侧边距 --- */
         margin-left: 0;
-        /* --- 优化：调整内容区域的内边距 --- */
+        /* --- 调整内容区域的内边距 --- */
         padding: 1.5rem 1rem; /* 上下1.5rem, 左右1rem */
-        /* --- 优化：确保内容在固定头部下方开始 --- */
+        /* --- 确保内容在固定头部下方开始 --- */
         margin-top: var(--header-height);
-        /* --- 优化：减少底部外边距以匹配更短的导航栏 --- */
+        /* --- 减少底部外边距以匹配更短的导航栏 --- */
         /* 估算底部导航高度约为 50-60px, 留一些缓冲 */
         margin-bottom: 65px;
-        /* --- 优化：根据新的布局调整最小高度计算 --- */
+        /* --- 根据新的布局调整最小高度计算 --- */
         min-height: calc(100vh - var(--header-height) - 65px);
     }
 
     .playlist-section {
-        /* --- 优化：移动端通常单列显示 --- */
+        /* --- 移动端通常单列显示 --- */
         grid-template-columns: 1fr;
         gap: 1.5rem; /* 调整卡片间距 */
     }
 
-    /* --- 优化：调整卡片和列表项的内边距适应较小屏幕 --- */
+    /* --- 调整卡片和列表项的内边距适应较小屏幕 --- */
     .content-card {
         padding: 1.5rem 1rem;
         border-radius: 15px; /* 可以稍微减小圆角 */
@@ -840,7 +814,7 @@ body {
          padding: 1rem;
          border-radius: 12px;
          margin: 0.6rem 0;
-         /* --- 优化：在移动端考虑改变布局 --- */
+         /* --- 在移动端考虑改变布局 --- */
          flex-direction: row; /* 保持行内布局或改为 column */
          align-items: center; /* 重新居中（如果改为 row）*/
     }
@@ -870,7 +844,7 @@ body {
 /* Further adjustments for very small screens */
 @media (max-width: 480px) {
     :root {
-        /* --- 优化：在非常小的屏幕上进一步减小头部高度 --- */
+        /* --- 在非常小的屏幕上进一步减小头部高度 --- */
         --header-height: 60px;
     }
 
@@ -879,11 +853,11 @@ body {
     }
 
     .glowing-title {
-        /* --- 优化：进一步减小标题字体 --- */
+        /* --- 进一步减小标题字体 --- */
         font-size: 1.4rem;
     }
      .header-sub {
-        /* --- 优化：进一步减小副标题字体 --- */
+        /* --- 进一步减小副标题字体 --- */
         font-size: 0.7rem;
         letter-spacing: 1px; /* 调整字间距 */
      }
@@ -892,7 +866,7 @@ body {
     /* .header-sub { display: none; } */
 
     .content-container {
-        /* --- 优化：调整非常小屏幕下的内容区域内边距 --- */
+        /* --- 调整非常小屏幕下的内容区域内边距 --- */
         padding: 1rem 0.8rem;
         /* 底部边距通常与 768px 保持一致，除非底部导航高度变化 */
         margin-bottom: 60px; /* 可以微调 */
@@ -1134,4 +1108,25 @@ body {
     .main-header, .side-nav {
          background: rgba(0, 0, 0, 0.9); /* 提高固定元素的对比度 */
     }
+}
+
+/* 未播出样式 */
+.upcoming {
+  position: relative;
+  opacity: 0.7;
+  filter: grayscale(0.3);
+}
+
+.upcoming::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  background: var(--primary);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transform: rotate(15deg);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
