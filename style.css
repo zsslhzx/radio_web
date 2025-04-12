@@ -329,6 +329,52 @@ body {
     box-shadow: 0 0 20px rgba(0,180,216,0.4);
 }
 
+/* 未播出排期的特殊样式 */
+.playlist-period.upcoming {
+    background: linear-gradient(135deg, rgba(216,180,0,0.05), transparent);
+    border-left: 4px solid #d8b400;
+    position: relative;
+}
+
+.playlist-period.upcoming .period-title::after {
+    background: linear-gradient(90deg, #d8b400, transparent);
+}
+
+.playlist-period.upcoming .period-number {
+    background: linear-gradient(135deg, #d8b400, #ffd700);
+    box-shadow: 0 0 15px rgba(216,180,0,0.3);
+}
+
+.upcoming-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #d8b400, #ffd700);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    box-shadow: 0 2px 8px rgba(216,180,0,0.3);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* 高亮效果 */
+@keyframes highlight {
+    0% { box-shadow: 0 0 0 rgba(216,180,0,0); }
+    50% { box-shadow: 0 0 30px rgba(216,180,0,0.8); }
+    100% { box-shadow: 0 0 0 rgba(216,180,0,0); }
+}
+
+.playlist-period.highlight {
+    animation: highlight 2s ease-in-out;
+}
+
 
 /* 播放列表区域 */
 .playlist-section {
