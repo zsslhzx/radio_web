@@ -1,0 +1,12 @@
+/* 深色模式优化 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --shadow-color: rgba(0, 180, 216, 0.3);
+        --glass-bg: rgba(255, 255, 255, 0.03); /* 可以更暗 */
+        --card-bg: rgba(10, 10, 20, 0.3); /* 更深的卡片背景 */
+        --border-color: rgba(255, 255, 255, 0.08); /* 边框可以更暗 */
+    }
+    body {
+         background: linear-gradient(135deg, #0a0a12 0%, #0f1a2f 100%) fixed; /* 更深的背景 */
+    }
+} 

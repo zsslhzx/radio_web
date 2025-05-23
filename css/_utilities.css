@@ -1,0 +1,68 @@
+/* 工具类 */
+.text-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.glass-effect { /* 这个类似乎没有直接使用，但定义保留 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+}
+
+.hidden { /* 通用隐藏类 */
+    display: none !important;
+}
+
+.visible { /* 用于配合JS显示元素 */
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    /* visibility: visible !important; */ /* 如果需要 */
+}
+
+/* 置底按钮样式 */
+.scroll-button {
+    position: fixed;
+    bottom: 2rem; /* 距离底部的距离 */
+    right: 2rem; /* 距离右侧的距离 */
+    background: rgba(0, 225, 255, 0.5); /* 半透明背景 */
+    color: white;
+    border: none;
+    border-radius: 50%; /* 圆形 */
+    width: 50px; /* 宽度 */
+    height: 50px; /* 高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 阴影 */
+    transition: all 0.3s var(--transition-timing);
+    z-index: 100; /* 确保在内容上方 */
+    opacity: 0; /* 初始隐藏 */
+    visibility: hidden; /* 初始隐藏 */
+}
+
+.scroll-button:hover {
+    background: rgba(0, 225, 255, 0.8); /* 悬停时背景更实 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* 悬停时阴影更明显 */
+}
+
+.scroll-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 移动端置底按钮调整 */
+@media (max-width: 768px) {
+    .scroll-button {
+        bottom: calc(var(--bottom-nav-height) + 1rem); /* 定位在底部导航栏上方 */
+        right: 1rem; /* 调整右侧距离 */
+        width: 40px; /* 调整尺寸 */
+        height: 40px; /* 调整尺寸 */
+        font-size: 1.2rem; /* 调整字体大小 */
+    }
+} 

@@ -1,0 +1,23 @@
+/* 粒子背景效果 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden; /* 防止粒子溢出 */
+}
+
+/* 粒子需要JS生成和定位，这里只定义样式 */
+.particle {
+    position: absolute;
+    background: radial-gradient(circle,
+        var(--primary) 0%,
+        transparent 70%);
+    border-radius: 50%;
+    animation: particleFloat 8s infinite linear;
+    /* JS 会设置 left, top, width, height, animation-duration, animation-delay */
+    opacity: 0; /* 初始透明，由 JS 或动画控制 */
+} 

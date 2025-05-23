@@ -1,0 +1,15 @@
+:root {
+    /* 主题颜色和基础变量 */
+    --primary: #00e1ff;
+    --secondary: #aaffec;
+    --bg-gradient: linear-gradient(135deg, #0d1b2a 0%, #1b2b3b 100%);
+    --glass-bg: rgba(173, 216, 230, 0.08);
+    --nav-width: 280px;
+    --header-height: 160px;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-color: rgba(0, 225, 255, 0.3);
+    --text-primary: #e0f7fa;
+    --text-secondary: rgba(224, 247, 250, 0.7);
+    --border-color: rgba(173, 216, 230, 0.2);
+    --card-bg: rgba(10, 25, 41, 0.6);
+} 

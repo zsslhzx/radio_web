@@ -1,0 +1,69 @@
+/* 内容区域布局 */
+.content-container {
+    margin-left: var(--nav-width);
+    margin-top: var(--header-height);
+    padding: 2.5rem;
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+}
+
+/* 内容卡片样式 */
+.content-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s var(--transition-timing), opacity 0.3s var(--transition-timing), box-shadow 0.3s var(--transition-timing);
+    margin-bottom: 2.5rem;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    opacity: 1;
+}
+
+/* 增强卡片光效 */
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(0, 180, 216, 0.1) 50%,
+        transparent 75%
+    );
+    animation: cardGlow 6s infinite linear;
+    z-index: -1;
+}
+
+.content-card:hover {
+    /* 3D悬浮效果 */
+    transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 12px 40px rgba(0, 180, 216, 0.2);
+    filter: brightness(1.05);
+}
+
+/* Content Display States */
+.content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s var(--transition-timing),
+                transform 0.3s var(--transition-timing);
+}
+
+.content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.5s var(--transition-timing); /* 应用淡入动画 */
+} 

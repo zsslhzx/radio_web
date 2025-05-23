@@ -1,0 +1,27 @@
+/* Footer Styles */
+footer {
+    background: rgba(10, 25, 41, 0.8); /* 与头部和导航类似的半透明背景 */
+    backdrop-filter: blur(10px); /* 模糊效果 */
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-secondary); /* 使用次要文本颜色 */
+    text-align: center;
+    padding: 1.5rem 1rem; /* 调整内边距 */
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* 添加顶部阴影 */
+    font-size: 0.9rem; /* 调整字体大小 */
+    letter-spacing: 0.5px; /* 调整字间距 */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* 移动端 footer 调整 */
+@media (max-width: 768px) {
+    footer {
+        /* 在移动端，footer 不再需要为底部导航留白，但需要确保在内容下方 */
+        margin-bottom: calc(var(--bottom-nav-height) + 1.5rem); /* 底部外边距，避免被底部导航遮挡 */
+        padding: 1rem 0.8rem; /* 调整内边距 */
+        font-size: 0.8rem; /* 调整字体大小 */
+    }
+} 

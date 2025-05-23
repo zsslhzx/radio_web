@@ -1,0 +1,45 @@
+/* Main Header Styles */
+.main-header {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(10, 25, 41, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border-color);
+    transform: translateZ(0);
+    will-change: transform;
+    /* 动态头部阴影效果 */
+    transition: box-shadow 0.3s var(--transition-timing);
+}
+
+/* 动态头部阴影效果 - 滚动时 */
+.main-header.scrolled {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 发光标题效果 */
+.glowing-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px var(--shadow-color), 0 0 30px rgba(0, 225, 255, 0.2);
+    animation: titleGlow 2s var(--transition-timing) infinite alternate;
+    letter-spacing: 0.08em;
+    transform: translateZ(0);
+    font-weight: bold;
+}
+
+.header-sub {
+    color: var(--text-secondary);
+    letter-spacing: 3px;
+    margin-top: 0.6rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    opacity: 0.8;
+} 

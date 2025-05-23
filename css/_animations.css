@@ -1,0 +1,73 @@
+/* 动画定义 */
+@keyframes titleGlow {
+    from { text-shadow: 0 0 8px var(--shadow-color); }
+    to { text-shadow: 0 0 20px var(--shadow-color); }
+}
+
+@keyframes navHover {
+    0% { box-shadow: 0 0 0 rgba(0, 180, 216, 0); }
+    50% { box-shadow: 0 0 15px rgba(0, 180, 216, 0.3); }
+    100% { box-shadow: 0 0 0 rgba(0, 180, 216, 0); }
+}
+
+@keyframes cardGlow {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes lineFlow {
+    0% { transform: translateY(-100%); } /* 使用 transform 性能更好 */
+    100% { transform: translateY(100%); }
+}
+
+@keyframes lightFlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7; /* 渐显 */
+    }
+    90% {
+        opacity: 0.7; /* 保持 */
+    }
+    100% {
+        /* 向上移动并稍微左右偏移，增加随机感 */
+        transform: translateY(-110vh) translateX(calc(var(--particle-drift, 0) * 1px));
+        opacity: 0; /* 渐隐 */
+    }
+} 

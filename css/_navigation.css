@@ -1,0 +1,72 @@
+/* 侧边导航栏样式 */
+.side-nav {
+    width: var(--nav-width);
+    position: fixed;
+    left: 0;
+    top: var(--header-height);
+    bottom: 0;
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: var(--card-bg);
+    border-right: 1px solid var(--border-color);
+    transform: translateZ(0);
+    z-index: 2;
+    transition: transform 0.3s var(--transition-timing);
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 导航项目样式 */
+/* 移除不适用于底部导航或过于复杂的伪元素效果 */
+.nav-item::after, .nav-item::before {
+    display: none;
+}
+
+@keyframes navHover {
+    0% { box-shadow: 0 0 0 rgba(0, 225, 255, 0); }
+    50% { box-shadow: 0 0 15px rgba(0, 225, 255, 0.4); }
+    100% { box-shadow: 0 0 0 rgba(0, 225, 255, 0); }
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0;
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(173, 216, 230, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s var(--transition-timing);
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
+    animation: none;
+    border: 1px solid rgba(0, 225, 255, 0.5);
+    background: rgba(173, 216, 230, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.nav-item.active {
+    background: rgba(0, 225, 255, 0.15);
+    border-left: 4px solid var(--primary);
+    transform: translateX(5px);
+    box-shadow: inset 4px 0 12px var(--shadow-color), 0 4px 15px var(--shadow-color);
+}
+
+.nav-icon {
+    font-size: 1.3rem;
+    margin-right: 0.8rem;
+    color: var(--primary);
+}
+
+.nav-text {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+} 

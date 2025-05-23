@@ -1,0 +1,264 @@
+/* 响应式布局 */
+/* 响应式断点更新 - Tablet */
+@media (max-width: 1024px) {
+    :root {
+        --nav-width: 240px; /* 平板设备侧边栏宽度 */
+    }
+     /* 平板上可能也需要调整内容区左边距 */
+    .content-container {
+        margin-left: var(--nav-width);
+    }
+    /* 平板上时间块列数可能需要调整 */
+    .playlist-section {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 调整最小宽度 */
+    }
+}
+
+
+/* --- MOBILE OPTIMIZATIONS START --- */
+@media (max-width: 768px) {
+    :root {
+        /* --- 显著减小移动端头部高度 --- */
+        --header-height: 70px;
+        --nav-width: 100%; /* 导航变为底部栏，宽度占满 */
+        --bottom-nav-height: 65px; /* 定义底部导航高度变量 */
+    }
+
+    .main-header {
+        /* --- 调整移动端头部内边距 --- */
+        padding: 0.8rem 1rem; /* 稍微减小垂直内边距 */
+        z-index: 1002;
+    }
+
+    .glowing-title {
+        /* --- 调整移动端标题字体大小 --- */
+        font-size: clamp(1.6rem, 4vw, 2rem);
+    }
+
+    .header-sub {
+       /* --- 调整移动端副标题字体大小和边距 --- */
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        margin-top: 0.2rem; /* 减小与主标题的间距 */
+    }
+
+    .side-nav {
+        /* --- 将导航栏移至底部 --- */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        width: 100%;
+        height: var(--bottom-nav-height); /* 使用变量设置高度 */
+        padding: 0.4rem 0.5rem;
+        background: rgba(10, 10, 20, 0.95); /* 使用更不透明的背景 */
+        backdrop-filter: blur(8px);
+       -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transform: translateY(0);
+        border-top: 1px solid var(--border-color);
+        border-right: none;
+        z-index: 9999; /* 提高 z-index */
+        overflow-y: hidden;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3); /* 添加顶部阴影 */
+    }
+
+    .nav-item {
+        margin: 0 0.2rem;
+        padding: 0.4rem 0.3rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: auto;
+        border-radius: 8px;
+        transform: none !important;
+        border: none;
+        background: transparent;
+        position: static;
+        overflow: visible;
+        animation: none;
+    }
+    .nav-item::before, .nav-item::after {
+         display: none;
+    }
+
+     .nav-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+     .nav-item.active {
+        background: rgba(0, 180, 216, 0.15);
+        border-left: none;
+        border-top: 3px solid var(--primary);
+        transform: none !important;
+        box-shadow: none;
+        color: var(--primary);
+     }
+     .nav-item.active .nav-icon {
+         color: var(--secondary);
+     }
+     .nav-item.active .nav-text {
+         color: var(--text-primary);
+         font-weight: 600;
+     }
+
+
+    .nav-icon {
+        font-size: 1.1rem;
+        margin-right: 0;
+        margin-bottom: 0.1rem;
+        color: var(--text-secondary);
+    }
+
+    .nav-text {
+        font-size: 0.65rem;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        font-weight: 400;
+        color: var(--text-secondary);
+    }
+
+    .content-container {
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+        margin-top: var(--header-height);
+        /* --- 确保内容不会被底部导航遮挡 --- */
+        padding-bottom: calc(var(--bottom-nav-height) + 1.5rem); /* 底部内边距等于导航高度加上一些额外空间 */
+        min-height: calc(100vh - var(--header-height) - var(--bottom-nav-height)); /* 调整最小高度计算 */
+    }
+
+    .playlist-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* --- 调整卡片和列表项的内边距适应较小屏幕 --- */
+    .content-card {
+        padding: 1.5rem 1rem;
+        border-radius: 15px;
+    }
+    .playlist-period {
+         padding: 1.5rem 1rem;
+         margin: 1.5rem 0;
+         border-radius: 20px;
+    }
+     .period-title {
+        font-size: 1.4rem;
+        padding-bottom: 0.6rem;
+        margin-bottom: 1rem;
+     }
+     .period-number {
+         width: 35px;
+         height: 35px;
+         font-size: 1rem;
+         margin-right: 0.8rem;
+     }
+     .time-block {
+        padding: 1.5rem 1rem;
+        border-radius: 15px;
+     }
+    .song-list li {
+         padding: 1rem;
+         border-radius: 12px;
+         margin: 0.6rem 0;
+         flex-direction: row;
+         align-items: center;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    :root {
+        --header-height: 60px;
+        --bottom-nav-height: 55px; /* 极小屏幕下稍微减小底部导航高度 */
+    }
+
+     .main-header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .glowing-title {
+        font-size: 1.4rem;
+    }
+     .header-sub {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+     }
+
+    .content-container {
+        padding: 1rem 0.8rem;
+        /* 确保内容不会被底部导航遮挡 */
+        padding-bottom: calc(var(--bottom-nav-height) + 1rem); /* 根据新的导航高度调整底部内边距 */
+        min-height: calc(100vh - var(--header-height) - var(--bottom-nav-height)); /* 调整最小高度计算 */
+    }
+
+    .nav-icon {
+        font-size: 1rem;
+    }
+    .nav-text {
+        font-size: 0.6rem;
+    }
+     .nav-item.active {
+         border-top-width: 2px;
+     }
+
+    .content-card, .playlist-period, .time-block {
+        padding: 1rem 0.8rem;
+        border-radius: 12px;
+    }
+    .song-list li {
+        padding: 0.8rem;
+        border-radius: 10px;
+    }
+     .period-title {
+        font-size: 1.2rem;
+     }
+     .period-number {
+         width: 30px;
+         height: 30px;
+         font-size: 0.9rem;
+     }
+
+     .song-title {
+         font-size: 0.95rem;
+     }
+     .duration {
+         font-size: 0.8rem;
+     }
+     .recommend-tag {
+         font-size: 0.8rem;
+         padding: 0.2rem 0.6rem;
+     }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    .nav-item:hover,
+    .content-card:hover,
+    .time-block:hover,
+    .song-list li:hover {
+        transform: none;
+        box-shadow: none;
+        filter: none;
+    }
+     .nav-item:hover {
+         background: rgba(255, 255, 255, 0.1);
+     }
+     .content-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+     }
+      .time-block:hover {
+         box-shadow: none;
+     }
+     .song-list li:hover {
+         background: rgba(255,255,255,0.04);
+         transform: none !important;
+         box-shadow: none;
+     }
+} 

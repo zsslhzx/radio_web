@@ -1,0 +1,18 @@
+/* 智能颜色对比 */
+@media (prefers-contrast: high) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0; /* 提高次要文本对比度 */
+        --border-color: rgba(255,255,255,0.5); /* 提高边框对比度 */
+        --glass-bg: rgba(0, 0, 0, 0.6); /* 加深背景对比度 */
+        --card-bg: rgba(0, 0, 0, 0.7);
+    }
+
+    .content-card, .playlist-period, .time-block {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid var(--border-color); /* 更明显的边框 */
+    }
+    .main-header, .side-nav {
+         background: rgba(0, 0, 0, 0.9); /* 提高固定元素的对比度 */
+    }
+} 
