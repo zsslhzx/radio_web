@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelectorAll('.period-title').forEach(title => {
     if (!title.textContent.includes('（')) {
-        title.classList.add('upcoming');
+        title.closest('.playlist-period').classList.add('upcoming');
         const anchor = document.createElement('a');
         anchor.id = `period-${title.querySelector('.period-number').textContent}`;
         title.parentElement.insertBefore(anchor, title);

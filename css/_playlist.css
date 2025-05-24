@@ -238,13 +238,13 @@
 }
 
 /* 未播出样式 */
-.upcoming {
+.playlist-period.upcoming .period-title {
   position: relative;
   opacity: 0.6; /* 降低透明度 */
   filter: grayscale(0.5); /* 增加灰度 */
 }
 
-.upcoming::after {
+.playlist-period.upcoming .period-title::after {
   content: 'Coming Soon';
   position: absolute;
   top: -8px; /* 调整位置 */
