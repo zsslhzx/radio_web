@@ -37,18 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // 检查是否已经显示过弹窗
-    const hasShownPopup = localStorage.getItem('hasShownPopup');
-    
-    // 如果没有显示过，则显示弹窗
-    if (!hasShownPopup) {
-        // 延迟2秒显示弹窗，让用户先看到网站内容
-        setTimeout(() => {
-            showPopup();
-            // 记录已经显示过弹窗
-            localStorage.setItem('hasShownPopup', 'true');
-        }, 2000);
-    }
+    // 每次进入网站都显示弹窗
+    setTimeout(() => {
+        showPopup();
+    }, 2000); // 延迟2秒显示弹窗
 
     function updateNav(tabId) {
         navItems.forEach(item => item.classList.remove('active'));
