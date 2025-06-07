@@ -11,6 +11,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let activeTab = localStorage.getItem('activeTab') || 'about';
 
+    // 弹窗相关
+    const popup = document.getElementById('popup');
+    const popupClose = document.getElementById('popup-close');
+    
+    // 显示弹窗
+    function showPopup() {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+    }
+    
+    // 关闭弹窗
+    function closePopup() {
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // 添加弹窗关闭事件
+    popupClose?.addEventListener('click', closePopup);
+    
+    // 点击弹窗背景也可以关闭
+    popup?.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+    
+    // 检查是否已经显示过弹窗
+    const hasShownPopup = localStorage.getItem('hasShownPopup');
+    
+    // 如果没有显示过，则显示弹窗
+    if (!hasShownPopup) {
+        // 延迟2秒显示弹窗，让用户先看到网站内容
+        setTimeout(() => {
+            showPopup();
+            // 记录已经显示过弹窗
+            localStorage.setItem('hasShownPopup', 'true');
+        }, 2000);
+    }
+
     function updateNav(tabId) {
         navItems.forEach(item => item.classList.remove('active'));
         const targetNavItem = navItemsMap[tabId];
